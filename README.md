@@ -1,2 +1,11 @@
-# contar-horas-prf
- Conta as horas que o PRF deve trabalhar no mês e quantas horas ele trabalhou.
+# Calcula Banco de Horas (PRF)
+
+Cálculo de:
+* horas a trabalhar no mês.
+* horas escaladas
+* saldo final do banco de horas
+
+
+<p align="center">
+  <img src="contador.png">
+</p>

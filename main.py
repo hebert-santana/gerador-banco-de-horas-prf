@@ -2,27 +2,55 @@ import datetime as dt
 # pacote para calcular dias úteis
 import workdays as wd
 
-print('===================== BANCO DE HORAS PRF =====================\n')
-ano = 2023
+meses_validos = [i for i in range(1, 13)]
+ano_atual = dt.datetime.now().year
 dia_inicial = 1
-mes = int(input('Informe o número do mês de referência: '))
-dia_final = int(input('Informe qual o último dia do mês de referência (28 ou 30 ou 31): '))
-feriados = int(input('Informe quantos feriados (em dias da semana) há no mês de referência: '))
 
-data_inicial = dt.date(ano, mes, dia_inicial)
-data_final = dt.date(ano, mes, dia_final)
+def ultimoDia(mes):
+    # determina dia final do mês
+    if mes == 2:
+        dia = 28
+    elif mes in [4, 6, 9, 11]:
+        dia = 30
+    else:
+        dia = 31   
+    return dia
 
-dias_uteis = wd.networkdays(data_inicial, data_final) - feriados
+while True:
+    print()
+    print('\033[94m===================================\033[0m \033[1;33mBANCO DE HORAS PRF\033[0m \033[94m===================================\033[0m\n')
+    mes = input('Número do Mês: ').strip()
+    plantoes = int(input('Informe a quantidade de plantões que está escalado no mês: '))
+    num_feriados = int(input('Informe quantos feriados (em dias da semana) há no mês de referência: '))
+    if int(mes) in meses_validos:
+        mes = int(mes)
+        dia_final = ultimoDia(mes)
+                
+        data_inicial = dt.date(ano_atual, mes, dia_inicial)
+        data_final = dt.date(ano_atual, mes, dia_final)
+        dias_uteis = wd.networkdays(data_inicial, data_final) - int(num_feriados)
 
-# 8 horas a cada dia útil
-horas_a_trabalhar = 8 * dias_uteis
+        # 8 horas a cada dia útil
+        horas_a_trabalhar = 8 * dias_uteis
+        # cada plantão o PRF acumula 25,5h
+        horas_trabalhadas = 25.5 * plantoes
+        banco_de_horas = horas_trabalhadas - horas_a_trabalhar
+            
+        # cor no saldo do banco de horas
+        if banco_de_horas > 0:
+            banco_de_horas = f'\033[92m{banco_de_horas} horas\033[0m'
+        else:
+            banco_de_horas = f'\033[91m{banco_de_horas} horas \033[0m'
+            
+        # imprimindo 
+        print(f'\nNúmero de dias úteis: {dias_uteis} dias.')
+        print(f'Horas a trabalhar: {horas_a_trabalhar} horas.')
+        print(f'Horas escalado: {horas_trabalhadas} horas.')
+        print(f'Saldo de horas: {banco_de_horas}.\n')
+        break
+    else:
+        print('Mês não válido!\nExemplo:\n1 = Janeiro\n11 - Novembro') 
 
-# cada plantão acumula 25,5h
-plantoes_no_mes = int(input('Informe a quantidade de plantões que está escalado no mês: '))
-horas_trabalhadas = 25.5 * plantoes_no_mes
 
-saldo_horas = horas_trabalhadas - horas_a_trabalhar
-
-dias_uteis = print(f'\nNúmero de dias úteis: {dias_uteis}\nHoras a trabalhar: {horas_a_trabalhar}\nHoras escalado: {horas_trabalhadas}\nSaldo de horas: {saldo_horas}\n' )
-print('===================== ================== =====================')
+print('\033[94m=================================== ================== ===================================\033[0m')
 
