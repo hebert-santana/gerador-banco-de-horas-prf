@@ -7,5 +7,5 @@ Cálculo de:
 
 
 <p align="center">
-  <img src="contador.png">
+  <img src="contador.png" width="80%">
 </p>
