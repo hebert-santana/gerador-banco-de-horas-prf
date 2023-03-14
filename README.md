@@ -7,3 +7,13 @@ O script é fácil de usar e pode ser personalizado para atender às necessidade
 <p align="center">
   <img src="contador.png" width="70%">
 </p>
+
+
+---
+
+### Autor
+Criado e mantido por [Hebert Santana](https://www.linkedin.com/in/hebert-santana/).
+
+[<img src="https://avatars.githubusercontent.com/u/102166830?v=4" width=80>](https://www.linkedin.com/in/hebert-santana/)
+
+
