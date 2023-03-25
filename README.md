@@ -5,7 +5,7 @@ Este é um script em Python desenvolvido para auxiliar no cálculo do banco de h
 O script é fácil de usar e pode ser personalizado para atender às necessidades específicas de cada funcionário da PRF. Com apenas algumas entradas de dados, o script fornecerá uma visão clara do banco de horas, ajudando a gerenciar o tempo de trabalho de forma eficiente.
 
 <p align="center">
-  <img src="contador.bmp" width="50%">
+  <img src="contador.bmp">
 </p>
 
 
